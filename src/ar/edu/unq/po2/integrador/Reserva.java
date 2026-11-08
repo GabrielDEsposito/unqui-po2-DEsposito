@@ -7,9 +7,9 @@ public class Reserva {
 	private List<Catalogo> items = new ArrayList<>();
 	private List<Voucher> vouchers = new ArrayList<>();
 	private int cuposDisponibles;
-	private float tazas;
+	//private float tazas;
 	private EstadoReserva estadoActual;
-	
+	private EstadoTraslado trasladoActual;
 	
 	
 	
@@ -40,8 +40,8 @@ public class Reserva {
 	}
 	
 	
-	public double costoServicio() {
-		double totalServicios = 0.0;
+	public float costoServicio() {
+		float totalServicios = 0;
 	    for (Catalogo item : items) {
 	        totalServicios += item.getPrecioBase();
 	    }
@@ -55,7 +55,7 @@ public class Reserva {
 	}
 	
 	public void procesarReembolsoCompleto() {
-	    double totalReembolso = this.costoServicio() + this.tazas;
+	    double totalReembolso = this.costoServicio() + this.costoTraslado(); //metodo privado costoTraslado
 	    this.generarVoucherReembolso(totalReembolso);
 	    
 	}
@@ -63,8 +63,20 @@ public class Reserva {
 	public void reembolsarServicios() {
 		double totalReembolso = this.costoServicio();
 	    this.generarVoucherReembolso(totalReembolso);
+	}	
+	
+	
+	
+	private double costoTraslado() {
+		return this.getEstrategiaDeTraslado().calcularCostoTraslado(this);
+		 
+	}
+	
+	public EstadoTraslado getEstrategiaDeTraslado() {
+		return trasladoActual;
 	}
 
+	
 	
 
 	
