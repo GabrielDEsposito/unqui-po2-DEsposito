@@ -16,6 +16,7 @@ public class Reserva {
 	
 	public void setEstadoActual(EstadoReserva estadoActual) {
 		this.estadoActual = estadoActual;
+		this.notificarObservadores(estadoActual);
 	}
 	
 	public void agregarServicio(Catalogo item) {
