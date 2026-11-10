@@ -11,7 +11,7 @@ public class Reserva {
 	private EstadoReserva estadoActual;
 	private EstadoTraslado trasladoActual;
 	private List<ObservadorReserva> observadores = new ArrayList<>();
-	
+		private MetodoPago  MetodoPago;
 	
 	
 	public void setEstadoActual(EstadoReserva estadoActual) {
