@@ -10,6 +10,7 @@ public class Reserva {
 	//private float tazas;
 	private EstadoReserva estadoActual;
 	private EstadoTraslado trasladoActual;
+	private List<ObservadorReserva> observadores = new ArrayList<>();
 	
 	
 	
@@ -25,6 +26,19 @@ public class Reserva {
 		 items.remove(item);
 	} 
 	
+	public void agregarObservador(ObservadorReserva observador) {
+		observadores.add(observador);
+	}
+	
+	public void quitarObservador(ObservadorReserva observador) {
+		observadores.remove(observador);
+	}
+	
+	public void notificarObservadores(EstadoReserva estadoActual) {
+		for(ObservadorReserva obs: observadores) {
+			obs.actualizar(this, estadoActual);
+		}
+	}
 	
 	public void decrementarCupo() {
         if (this.cuposDisponibles > 0) {
