@@ -12,14 +12,11 @@ public class TarjetaCreditoInternacional extends MetodoPago {
 
 
     void ReservarFondos() {
-        System.out.println("Reservando fondos de la tarjeta internacional");
-        
     }
 
 
     void EjecutarTransacion() {
-        System.out.println("Ejecutando transaccion de la tarjeta internacional");
-        
+        tarjeta
     }
 
 
