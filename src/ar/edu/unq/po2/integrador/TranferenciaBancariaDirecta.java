@@ -3,11 +3,11 @@ package ar.edu.unq.po2.integrador;
 public class TransferenciaBancariaDirecta extends MetodoDePago {
     private int cbu;
     private String alias;
-    private ITransferenciaBancariaDirecta apiTransferencia;
+    private ITransferenciaBancariaDirecta TranferenciaBancariaDirecta;
 
     @Override
     protected void validarDatos() {
-        apiTransferencia.validarCbuYAlias(cbu, alias);
+        TranferenciaBancariaDirecta.validarCbuYAlias(cbu, alias);
     }
 
     @Override
@@ -17,7 +17,7 @@ public class TransferenciaBancariaDirecta extends MetodoDePago {
 
     @Override
     protected void ejecutarTransaccion(double monto) {
-        apiTransferencia.transferenciaDirectaOProgramada(monto);
+        TranferenciaBancariaDirecta.transferenciaDirectaOProgramada(monto);
     }
 
     @Override
