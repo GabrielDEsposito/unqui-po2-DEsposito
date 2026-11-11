@@ -7,7 +7,7 @@ import static org.mockito.Mockito.when;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import ar.edu.unq.po2.integrador.Catalogo;
+import ar.edu.unq.po2.integrador.ItemCatalogo;
 import ar.edu.unq.po2.integrador.EstadoCancelada;
 import ar.edu.unq.po2.integrador.EstadoConfirmada;
 import ar.edu.unq.po2.integrador.EstadoTraslado;
@@ -21,7 +21,7 @@ public class ReservaTest {
 	
 	private Reserva reserva;
 	private EstadoCancelada reservaCancelada;
-    private Catalogo ExcursiónGuiadaMuseo;
+    private ItemCatalogo ExcursiónGuiadaMuseo;
     private EstadoConfirmada estadoConfirmada;
     private EstadoTraslado trasladoExpress;
     
@@ -32,7 +32,7 @@ public class ReservaTest {
     	reserva.setCuposDisponibles(5);
     	
     	
-        ExcursiónGuiadaMuseo = mock(Catalogo.class);
+        ExcursiónGuiadaMuseo = mock(ItemCatalogo.class);
         trasladoExpress = mock(EstadoTraslado.class);
     }
 

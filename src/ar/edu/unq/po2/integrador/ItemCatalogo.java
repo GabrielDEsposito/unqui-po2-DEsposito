@@ -1,12 +1,12 @@
 package ar.edu.unq.po2.integrador;
 
-public abstract class Catalogo {
+public abstract class ItemCatalogo {
 
 	private String nombre;
 	private String descripcion;
 	
 	
-	public Catalogo(String nombre, String descripcion) {
+	public ItemCatalogo(String nombre, String descripcion) {
         this.nombre = nombre;
         this.descripcion = descripcion;
     }

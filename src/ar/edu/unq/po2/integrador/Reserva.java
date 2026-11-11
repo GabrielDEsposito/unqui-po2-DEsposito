@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Reserva {
-	private List<Catalogo> items = new ArrayList<>();
+	private List<ItemCatalogo> items = new ArrayList<>();
 	private List<Voucher> vouchers = new ArrayList<>();
 	private int cuposDisponibles;
 	//private float tazas;
@@ -24,11 +24,11 @@ public class Reserva {
 		this.notificarObservadores(estadoActual);
 	}
 	
-	public void agregarServicio(Catalogo item) {
+	public void agregarServicio(ItemCatalogo item) {
 		 items.add(item);
 	}
 	
-	public void quitarServicio(Catalogo item) {
+	public void quitarServicio(ItemCatalogo item) {
 		 items.remove(item);
 	} 
 	
@@ -69,7 +69,7 @@ public class Reserva {
 	
 	public float costoServicio() {
 		float totalServicios = 0;
-	    for (Catalogo item : items) { //antes estaba Catalogo item
+	    for (ItemCatalogo item : items) { //antes estaba Catalogo item
 	        totalServicios += item.getPrecioBase();
 	    }
 	    return totalServicios;
@@ -107,7 +107,7 @@ public class Reserva {
 		this.trasladoActual = trasladoActual;
 	}
 	
-	public List<Catalogo> getItems(){
+	public List<ItemCatalogo> getItems(){
 		return items;
 		
 	}

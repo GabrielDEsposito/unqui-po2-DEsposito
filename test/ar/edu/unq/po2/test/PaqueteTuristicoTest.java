@@ -5,16 +5,16 @@ import static org.mockito.Mockito.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import ar.edu.unq.po2.integrador.Catalogo;
+import ar.edu.unq.po2.integrador.ItemCatalogo;
 import ar.edu.unq.po2.integrador.ItemCatalogo;
 import ar.edu.unq.po2.integrador.PaqueteTuristico;
 
 public class PaqueteTuristicoTest {
 
     private PaqueteTuristico paquete;
-    private Catalogo ExcursiónGuiadaMuseo;
-    private Catalogo NocheDeHotelCentral;
-    private Catalogo TrasladoAeropuertoHotel;
+    private ItemCatalogo ExcursiónGuiadaMuseo;
+    private ItemCatalogo NocheDeHotelCentral;
+    private ItemCatalogo TrasladoAeropuertoHotel;
 
     @BeforeEach
     void setUp() {
@@ -22,9 +22,9 @@ public class PaqueteTuristicoTest {
         paquete = new PaqueteTuristico("Pack Escapada Urbana", "Paquete con descuento", 10.0);
 
         
-        ExcursiónGuiadaMuseo = mock(Catalogo.class);
-        NocheDeHotelCentral = mock(Catalogo.class);
-        TrasladoAeropuertoHotel = mock(Catalogo.class);
+        ExcursiónGuiadaMuseo = mock(ItemCatalogo.class);
+        NocheDeHotelCentral = mock(ItemCatalogo.class);
+        TrasladoAeropuertoHotel = mock(ItemCatalogo.class);
     }
 
     @Test

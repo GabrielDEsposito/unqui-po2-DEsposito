@@ -3,19 +3,19 @@ package ar.edu.unq.po2.integrador;
 public class EstadoCheckIn implements EstadoReserva{
 
 	@Override
-	public void agregarServicio(Reserva reserva, Catalogo item) {
+	public void agregarServicio(Reserva reserva, ItemCatalogo item) {
 		throw new IllegalStateException("la reserva se encuentra en estado de check-in.");
 		
 	}
 
 	@Override
-	public void quitarServicio(Reserva reserva, Catalogo item) {
+	public void quitarServicio(Reserva reserva, ItemCatalogo item) {
 		throw new IllegalStateException("la reserva se encuentra en estado de check-in.");
 		
 	}
 
 	@Override
-	public void confirmada_pagada(Reserva reserva, Catalogo item) {
+	public void confirmada_pagada(Reserva reserva, ItemCatalogo item) {
 		throw new IllegalStateException("la reserva se encuentra en estado de check-in.");
 		
 	}

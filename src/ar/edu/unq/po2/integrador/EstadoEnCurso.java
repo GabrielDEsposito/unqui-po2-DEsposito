@@ -3,19 +3,19 @@ package ar.edu.unq.po2.integrador;
 public class EstadoEnCurso implements EstadoReserva{
 
 	@Override
-	public void agregarServicio(Reserva reserva, Catalogo item) {
+	public void agregarServicio(Reserva reserva, ItemCatalogo item) {
 		 throw new IllegalStateException("el viaje/servicio esta en ejecucion.");
 		
 	}
 
 	@Override
-	public void quitarServicio(Reserva reserva, Catalogo item) {
+	public void quitarServicio(Reserva reserva, ItemCatalogo item) {
 		 throw new IllegalStateException("el viaje/servicio esta en ejecucion.");
 		
 	}
 
 	@Override
-	public void confirmada_pagada(Reserva reserva, Catalogo itemm) {
+	public void confirmada_pagada(Reserva reserva, ItemCatalogo itemm) {
 		 throw new IllegalStateException("el viaje/servicio esta en ejecucion.");
 		
 	}

@@ -3,9 +3,9 @@ package ar.edu.unq.po2.integrador;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PaqueteTuristico extends Catalogo{
+public class PaqueteTuristico extends ItemCatalogo{
 	//private List<Catalogo> items;
-	private List<Catalogo> items;
+	private List<ItemCatalogo> items;
 	private double descuento;
 
 	
@@ -15,15 +15,15 @@ public class PaqueteTuristico extends Catalogo{
         this.descuento = descuento;
     }	
 	
-	public void agregarItem(Catalogo item) {
+	public void agregarItem(ItemCatalogo item) {
         this.items.add(item);
     }
 
-    public void quitarItem(Catalogo item) {
+    public void quitarItem(ItemCatalogo item) {
         this.items.remove(item);
     }
     
-    public List<Catalogo> getItems() {
+    public List<ItemCatalogo> getItems() {
         return this.items;
     }
 
@@ -38,7 +38,7 @@ public class PaqueteTuristico extends Catalogo{
 	@Override
 	public double getPrecioBase() {
 		double sumaPrecios = 0;
-		for (Catalogo item : items) {
+		for (ItemCatalogo item : items) {
 		    sumaPrecios += item.getPrecioBase();
 		}
 		return sumaPrecios;

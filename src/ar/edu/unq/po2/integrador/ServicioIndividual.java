@@ -1,6 +1,6 @@
 package ar.edu.unq.po2.integrador;
 
-public class ServicioIndividual extends Catalogo{
+public class ServicioIndividual extends ItemCatalogo{
 	
 	private int reservaId;
 	private String proveedor;
