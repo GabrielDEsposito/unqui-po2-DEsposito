@@ -6,22 +6,23 @@ public class TarjetaCreditoInternacional extends MetodoPago {
     private String fechaVencimiento;
     private ItarjetaInternacional tarjetaInternacional;
 
-    void ValidarDatos() {
-        tarjetaInternacional.validarDatosTarjeta(NumeroTarjeta, cvv, fechaVencimiento);
+    @Override
+    protected void validarDatos() {
+        tarjetaInternacional.validarDatosTarjeta(numeroTarjeta, cvv, vencimiento);
     }
 
-
-    void ReservarFondos() {
+    @Override
+    protected void reservarFondos(double monto) {
+        tarjetaInternacional.preAutorizacionDelBanco(monto);
     }
 
-
-    void EjecutarTransacion() {
-        tarjeta
+    @Override
+    protected void ejecutarTransaccion(double monto) {
+        tarjetaInternacional.transferenciaInmediata(monto);
     }
 
+    @Override
+    protected void notificarResultado() {
 
-    void NotificarResultado() {
-        System.out.println("Notificando resultado de la tarjeta internacional");
     }
-
 }
