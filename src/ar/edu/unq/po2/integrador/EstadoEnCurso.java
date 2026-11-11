@@ -15,7 +15,7 @@ public class EstadoEnCurso implements EstadoReserva{
 	}
 
 	@Override
-	public void confirmada_pagada(Reserva reserva, Catalogo item) {
+	public void confirmada_pagada(Reserva reserva, Catalogo itemm) {
 		 throw new IllegalStateException("el viaje/servicio esta en ejecucion.");
 		
 	}

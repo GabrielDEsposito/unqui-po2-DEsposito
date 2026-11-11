@@ -17,7 +17,7 @@ public class EstadoConfirmada implements EstadoReserva{
 	public void confirmada_pagada(Reserva reserva, Catalogo item) {
 		reserva.decrementarCupo();
 		
-	}
+	} 
 
 	@Override
 	public void en_checkIn(Reserva reserva) {

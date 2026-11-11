@@ -13,6 +13,11 @@ public class Reserva {
 	
 	
 	
+	
+	public List<Voucher> getVouchers(){
+		return vouchers;
+	}
+	
 	public void setEstadoActual(EstadoReserva estadoActual) {
 		this.estadoActual = estadoActual;
 	}
@@ -34,6 +39,13 @@ public class Reserva {
         }
     }
 	
+	public int getCuposDisponibles() {
+		return cuposDisponibles;
+	}
+	
+	public void setCuposDisponibles(int numero) {
+		 this.cuposDisponibles = numero;
+	}
 	
 	public void liberarCupo() {
 		this.cuposDisponibles++;
@@ -42,7 +54,7 @@ public class Reserva {
 	
 	public float costoServicio() {
 		float totalServicios = 0;
-	    for (Catalogo item : items) {
+	    for (Catalogo item : items) { //antes estaba Catalogo item
 	        totalServicios += item.getPrecioBase();
 	    }
 	    return totalServicios;
@@ -74,6 +86,15 @@ public class Reserva {
 	
 	public EstadoTraslado getEstrategiaDeTraslado() {
 		return trasladoActual;
+	}
+	
+	public void setEstrategiaDeTraslado(EstadoTraslado trasladoActual) {
+		this.trasladoActual = trasladoActual;
+	}
+	
+	public List<Catalogo> getItems(){
+		return items;
+		
 	}
 
 	
