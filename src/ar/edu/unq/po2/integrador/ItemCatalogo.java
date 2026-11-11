@@ -11,24 +11,14 @@ public abstract class ItemCatalogo {
         this.descripcion = descripcion;
     }
 	
-	
 	public String getNombre() {
 		return nombre;
 	}
-
-
-
-	public abstract double getPrecioBase();
-
-
 
 	public String getDescripcion() {
 		return descripcion;
 	}
 
-
-	
-	
-	
-	
+	public abstract double getPrecioBase();
+		
 }
