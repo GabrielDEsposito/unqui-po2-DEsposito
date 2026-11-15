@@ -20,5 +20,7 @@ public abstract class ItemCatalogo {
 	}
 
 	public abstract double getPrecioBase();
+	public abstract boolean perteneceACategoria(Categoria categoria);
+	public abstract boolean tieneCupoDisponible();
 		
 }

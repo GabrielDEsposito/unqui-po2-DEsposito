@@ -9,6 +9,6 @@ public class CriterioCategoria implements CriterioBusqueda {
 
     @Override
     public boolean cumple(ItemCatalogo item) {
-        // return item.perteneceACategoria(categoria); | Faltaria implementar el tema de categorias en ItemCatalogo
+        return item.perteneceACategoria(categoria);
     }
 }
