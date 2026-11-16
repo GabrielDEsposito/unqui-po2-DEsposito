@@ -20,7 +20,7 @@ public class BilleteraVirtualCrypto extends MetodoPago {
     }
 
     @Override
-    protected void notificarResultado(double monto) {
+    protected void NotificarResultado(double monto) {
         BilleteraVirtualOCrypto.notificacionPush(monto);
     }
 }

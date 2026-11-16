@@ -30,7 +30,7 @@ public class TarjetaCreditoInternacional extends MetodoPago {
 
     @Override
     protected void NotificarResultado(double monto) {
-        Voucher voucher = new Voucher(monto, this.getCodigoTransaccion());
+        Voucher voucher = new Voucher(monto);
         this.vouchers.add(voucher);
     }
 
