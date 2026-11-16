@@ -6,7 +6,7 @@ import static org.mockito.Mockito.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class ServicioIndividualTest {
+class AtributoDinamicoTest {
 
     private Cupo cupo;
     private ServicioIndividual hotel;
@@ -24,4 +24,11 @@ class ServicioIndividualTest {
         assertEquals(15000, hotel.getPrecioFinal(), 0.001);
     }
 
+    @Test
+    void servicioConAtributoObligatorioSinValorEsInvalido() {
+        hotel.agregarAtributo(new AtributoDinamico("CapacidadMaxima", true, new ValidacionNumerico()));
+        assertFalse(hotel.esValido());
+    }
+
+    
 }
