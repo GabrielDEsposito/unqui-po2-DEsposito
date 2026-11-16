@@ -8,6 +8,7 @@ public class ServicioIndividual extends ItemCatalogo{
 	private final double precioBase;
 	private final double descuentoPromocional;
 	private final Cupo cupo;
+	private List<AtributoDinamico> AtributoDinamicos = new ArrayList<>();
 	
 	public ServicioIndividual(int reservaId, String nombre, String descripcion, String proveedor, Categoria categoria, double precioBase, double descuentoPromocional, Cupo cupo) {
 		super(nombre, descripcion);
