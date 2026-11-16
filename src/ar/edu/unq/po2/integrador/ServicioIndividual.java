@@ -11,8 +11,8 @@ public class ServicioIndividual extends ItemCatalogo{
 	
 	public ServicioIndividual(int reservaId, String nombre, String descripcion, String proveedor, Categoria categoria, double precioBase, double descuentoPromocional, Cupo cupo) {
 		super(nombre, descripcion);
-		if (descuentoPromocional < 0 || descuentoPromocional > 1) {
-			throw new IllegalArgumentException("El descuento debe estar entre 0 y 1");
+		if (descuentoPromocional < 0 || descuentoPromocional > 100) {
+			throw new IllegalArgumentException("El descuento debe estar entre 0 y 100");
 		}
 		this.reservaId = reservaId;
 		this.proveedor = proveedor;
@@ -22,9 +22,6 @@ public class ServicioIndividual extends ItemCatalogo{
 		this.cupo = cupo;
 	}
 	
-	public double getPrecioFinal() {
-        return precioBase * (1 - descuentoPromocional);
-    }
 	public int getReservaId() {
 		return reservaId;
 	}
@@ -38,6 +35,10 @@ public class ServicioIndividual extends ItemCatalogo{
 		return proveedor;
 	}
 	
+	@Override
+	public double getPrecioFinal() {
+		return precioBase * (1 - descuentoPromocional / 100);
+	}
 	@Override
 	public double getPrecioBase() {
 		return precioBase;
