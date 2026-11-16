@@ -104,7 +104,7 @@ public class Reserva {
 	}
 	
 	public void procesarReembolsoCompleto() {
-	    double totalReembolso = this.costoServicio() + this.costoTraslado(); //metodo privado costoTraslado
+	    double totalReembolso = this.costoServicio() + this.costoTraslado(); 
 	    this.generarVoucherReembolso(totalReembolso);
 	    
 	}
