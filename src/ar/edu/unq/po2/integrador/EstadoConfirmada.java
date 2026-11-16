@@ -15,7 +15,7 @@ public class EstadoConfirmada implements EstadoReserva{
 
 	@Override
 	public void confirmar(Reserva reserva) {
-		reserva.decrementarCupo();
+		reserva.reservarCupos();
 	} 
 
 	@Override
@@ -38,7 +38,7 @@ public class EstadoConfirmada implements EstadoReserva{
 
 	@Override
 	public void cancelar(Reserva reserva) {
-		reserva.liberarCupo();
+		reserva.liberarCupos();
 		reserva.setEstadoActual(new EstadoCancelada());
 	}
 

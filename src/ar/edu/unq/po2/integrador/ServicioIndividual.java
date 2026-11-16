@@ -1,5 +1,8 @@
 package ar.edu.unq.po2.integrador;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ServicioIndividual extends ItemCatalogo{
 	
 	private final int reservaId;

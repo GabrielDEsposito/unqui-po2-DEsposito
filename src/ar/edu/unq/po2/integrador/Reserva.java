@@ -14,7 +14,12 @@ public class Reserva {
 	private MetodoPago metodoPago;
 	
 	public Reserva() {
+		this.items = new ArrayList<>();
+	    this.vouchers = new ArrayList<>();
+	    this.observadores = new ArrayList<>();
+	  
 		this.estadoActual = new EstadoSolicitudPendiente();
+		
 	}
 	
 	public List<Voucher> getVouchers(){
@@ -40,11 +45,11 @@ public class Reserva {
 	}
 	
 	public void agregarServicio(ItemCatalogo item) {
-		estadoActual.agregarServicio(this, item);
+		this.items.add(item); //estadoActual.agregarServicio(this, item);
 	}
 
 	public void quitarServicio(ItemCatalogo item) {
-		estadoActual.quitarServicio(this, item);
+		this.items.remove(item); //estadoActual.quitarServicio(this, item);
 	}
 	public void incorporarServicio(ItemCatalogo item) {
 		items.add(item);

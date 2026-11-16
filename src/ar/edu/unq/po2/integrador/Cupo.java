@@ -21,9 +21,18 @@ public class Cupo {
 		return total;
 	}
 	
+	public int setTotal(int total) {
+		return this.total = total;
+	}
+	
 	public int getReservados() {
 		return reservados;
 	}
+	
+	public int setReservados(int reservados) {
+		return this.reservados = reservados;
+	}
+	
 	
 	public void reservar(int unidades) {
         if (unidades > disponibles()) throw new CupoInsuficienteException("Se piden " + unidades + " unidades y solo hay " + disponibles());
