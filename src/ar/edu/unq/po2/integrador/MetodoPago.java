@@ -1,9 +1,12 @@
 package ar.edu.unq.po2.integrador;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public abstract class MetodoPago {
 	
-	private String codigoTransaccion;
-    private List<String> codigosRegistrados = new ArrayList<>();
+	private int codigoTransaccion;
+    private List<Integer> codigosRegistrados = new ArrayList<>();
 	private static int contadorTransacciones = 0;
 	
 	public void RealizarPago(double monto) {
@@ -20,11 +23,11 @@ public abstract class MetodoPago {
 	
 	protected abstract void EjecutarTransacion(double monto);
 	
-	protected void notificarResultado(double monto) {
+	protected void NotificarResultado(double monto) {
         this.codigosRegistrados.add(this.codigoTransaccion);
     }
 
-	protected String getCodigoTransaccion() {
+	protected int getCodigoTransaccion() {
         return codigoTransaccion;
     }
 }

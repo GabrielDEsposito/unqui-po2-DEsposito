@@ -1,5 +1,8 @@
 package ar.edu.unq.po2.integrador;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
+
 public class ValidacionFecha implements EstrategiaValidacion {
      public boolean esConsistente(String valor) {
         try {

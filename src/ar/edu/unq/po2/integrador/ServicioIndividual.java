@@ -1,7 +1,9 @@
 package ar.edu.unq.po2.integrador;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ServicioIndividual extends ItemCatalogo{
 	
@@ -11,7 +13,8 @@ public class ServicioIndividual extends ItemCatalogo{
 	private final double precioBase;
 	private final double descuentoPromocional;
 	private final Cupo cupo;
-	private List<AtributoDinamico> AtributoDinamicos = new ArrayList<>();
+	private List<AtributoDinamico> atributosDinamicos = new ArrayList<>();
+	private final Map<String, String> valores = new HashMap<>();
 	
 	public ServicioIndividual(int reservaId, String nombre, String descripcion, String proveedor, Categoria categoria, double precioBase, double descuentoPromocional, Cupo cupo) {
 		super(nombre, descripcion);
@@ -63,4 +66,19 @@ public class ServicioIndividual extends ItemCatalogo{
 	public boolean tieneCupoDisponible() {
 		return cupo.hayDisponible();
 	}
+
+	public void agregarAtributo(AtributoDinamico atributo) {
+    atributosDinamicos.add(atributo);
+	}
+
+	public void asignarValor(String nombreAtributo, String valor) {
+    valores.put(nombreAtributo, valor);
+	}
+
+	public boolean esValido() {
+    boolean fijosOk = getNombre() != null && !getNombre().isBlank();
+    return fijosOk && atributosDinamicos.stream()
+            .allMatch(a -> a.validarValor(valores.get(a.getNombre())));
+	}
+
 }
