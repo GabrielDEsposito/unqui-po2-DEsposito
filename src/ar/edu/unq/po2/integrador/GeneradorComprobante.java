@@ -3,7 +3,7 @@ package ar.edu.unq.po2.integrador;
 public class GeneradorComprobante implements ObservadorReserva{
 	
 	@Override
-	public void actualizar(Reserva reserva, EstadoReserva estado) {
+	public void actualizar(Reserva reserva, EstadoReserva anterior, EstadoReserva estado) {
 		if (estado instanceof EstadoFinalizada) {
 			this.crearComprobanteFiscalYVoucher(reserva);
 		}

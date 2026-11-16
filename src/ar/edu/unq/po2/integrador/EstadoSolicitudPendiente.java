@@ -3,6 +3,11 @@ package ar.edu.unq.po2.integrador;
 public class EstadoSolicitudPendiente implements EstadoReserva {
 
 	@Override
+	public TipoEstado tipo() {
+		return TipoEstado.SOLICITUD_PENDIENTE;
+	}
+	
+	@Override
 	public void agregarServicio(Reserva reserva, ItemCatalogo item) {
 		reserva.agregarServicio(item);
 		
@@ -15,36 +20,33 @@ public class EstadoSolicitudPendiente implements EstadoReserva {
 	}
 
 	@Override
-	public void confirmada_pagada(Reserva reserva, ItemCatalogo item) {
-		 reserva.setEstadoActual(new EstadoConfirmada());
+	public void confirmar(Reserva reserva) {
+		reserva.reservarCupos(); 
+		reserva.setEstadoActual(new EstadoConfirmada());
 		
 	}
 
 	@Override
-	public void en_checkIn(Reserva reserva) {
-		throw new IllegalStateException("No hay reserva confirmada aun.");
+	public void hacerCheckIn(Reserva reserva) {
+		throw new OperacionInvalidaException("No hay reserva confirmada aun.");
 	}
 
 	@Override
-	public void en_curso(Reserva reserva) {
-		throw new IllegalStateException("No hay reserva confirmada aun.");
+	public void iniciar(Reserva reserva) {
+		throw new OperacionInvalidaException("No hay reserva confirmada aun.");
 		
 	}
 
 	@Override
-	public void finalizada(Reserva reserva) {
-		throw new IllegalStateException("No hay reserva confirmada aun.");
+	public void finalizar(Reserva reserva) {
+		throw new OperacionInvalidaException("No hay reserva confirmada aun.");
 		
 	}
 
 	@Override
-	public void cancelada(Reserva reserva) {
+	public void cancelar(Reserva reserva) {
 		 reserva.setEstadoActual(new EstadoCancelada());
 		
 	}
-
-
-
-	
 
 }

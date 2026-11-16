@@ -3,52 +3,51 @@ package ar.edu.unq.po2.integrador;
 public class EstadoCheckIn implements EstadoReserva{
 
 	@Override
+	public TipoEstado tipo() {
+		return TipoEstado.EN_CHECKIN;
+	}
+	
+	@Override
 	public void agregarServicio(Reserva reserva, ItemCatalogo item) {
-		throw new IllegalStateException("la reserva se encuentra en estado de check-in.");
+		throw new OperacionInvalidaException("la reserva se encuentra en estado de check-in.");
 		
 	}
 
 	@Override
 	public void quitarServicio(Reserva reserva, ItemCatalogo item) {
-		throw new IllegalStateException("la reserva se encuentra en estado de check-in.");
+		throw new OperacionInvalidaException("la reserva se encuentra en estado de check-in.");
 		
 	}
 
 	@Override
-	public void confirmada_pagada(Reserva reserva, ItemCatalogo item) {
-		throw new IllegalStateException("la reserva se encuentra en estado de check-in.");
+	public void confirmar(Reserva reserva) {
+		throw new OperacionInvalidaException("la reserva se encuentra en estado de check-in.");
 		
 	}
 
 	@Override
-	public void en_checkIn(Reserva reserva) {
-		throw new IllegalStateException("la reserva se encuentra en estado de check-in.");
+	public void hacerCheckIn(Reserva reserva) {
+		throw new OperacionInvalidaException("la reserva se encuentra en estado de check-in.");
 		
 		
 	}
 
 	@Override
-	public void en_curso(Reserva reserva) {
-		throw new IllegalStateException("la reserva se encuentra en estado de check-in.");
+	public void iniciar(Reserva reserva) {
+		throw new OperacionInvalidaException("la reserva se encuentra en estado de check-in.");
 		
 	}
 
 	@Override
-	public void finalizada(Reserva reserva) {
+	public void finalizar(Reserva reserva) {
 		 reserva.setEstadoActual(new EstadoFinalizada());
 		
 	}
 
 	@Override
-	public void cancelada(Reserva reserva) {
-		reserva.liberarCupo();
+	public void cancelar(Reserva reserva) {
+		reserva.liberarCupos();
         reserva.procesarReembolsoCompleto();
         reserva.setEstadoActual(new EstadoCancelada());
-		
 	}
-
-	
-
-
-	
 }

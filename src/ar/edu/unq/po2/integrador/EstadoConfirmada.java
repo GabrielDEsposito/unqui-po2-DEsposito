@@ -3,44 +3,48 @@ package ar.edu.unq.po2.integrador;
 public class EstadoConfirmada implements EstadoReserva{
 
 	@Override
+	public TipoEstado tipo() {
+		return TipoEstado.CONFIRMADA;
+	}
+	
+	@Override
 	public void agregarServicio(Reserva reserva, ItemCatalogo item) {
-		throw new IllegalStateException("esta opcion no esta disponible");
+		throw new OperacionInvalidaException("esta opcion no esta disponible");
 	}
 
 	@Override
 	public void quitarServicio(Reserva reserva, ItemCatalogo item) {
-		throw new IllegalStateException("esta opcion no esta disponible");
+		throw new OperacionInvalidaException("esta opcion no esta disponible");
 		
 	}
 
 	@Override
-	public void confirmada_pagada(Reserva reserva, ItemCatalogo item) {
-		reserva.decrementarCupo();
-		
+	public void confirmar(Reserva reserva) {
+		reserva.reservarCupos();
 	} 
 
 	@Override
-	public void en_checkIn(Reserva reserva) {
+	public void hacerCheckIn(Reserva reserva) {
 		reserva.setEstadoActual(new EstadoCheckIn());
 		
 	}
 
 	@Override
-	public void en_curso(Reserva reserva) {
-		throw new IllegalStateException("esta opcion no esta disponible");
+	public void iniciar(Reserva reserva) {
+		throw new OperacionInvalidaException("esta opcion no esta disponible");
 		
 	}
 
 	@Override
-	public void finalizada(Reserva reserva) {
-		throw new IllegalStateException("esta opcion no esta disponible");
+	public void finalizar(Reserva reserva) {
+		throw new OperacionInvalidaException("esta opcion no esta disponible");
 		
 	}
 
 	@Override
-	public void cancelada(Reserva reserva) {
+	public void cancelar(Reserva reserva) {
+		reserva.liberarCupos();
 		reserva.setEstadoActual(new EstadoCancelada());
-		
 	}
 
 

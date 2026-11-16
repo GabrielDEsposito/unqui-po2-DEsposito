@@ -2,7 +2,7 @@ package ar.edu.unq.po2.integrador;
 
 public class Fidelizacion implements ObservadorReserva{
 	
-	public void actualizar(Reserva reserva, EstadoReserva estado) {
+	public void actualizar(Reserva reserva, EstadoReserva anterior, EstadoReserva estado) {
 		if (estado instanceof EstadoCancelada) {
 			this.enviarMensajeCuponDescuento(reserva);
 		}

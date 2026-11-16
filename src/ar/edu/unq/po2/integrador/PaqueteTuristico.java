@@ -18,7 +18,10 @@ public class PaqueteTuristico extends ItemCatalogo{
     }	
 	
 	public void agregarItem(ItemCatalogo item) {
-        this.items.add(item);
+        if (item.contiene(this)) {
+        	throw new IllegalArgumentException("Un paquete no puede contenerse a si mismoi");
+        }
+        items.add(item);
     }
 
     public void quitarItem(ItemCatalogo item) {
@@ -71,5 +74,17 @@ public class PaqueteTuristico extends ItemCatalogo{
 			if(item.contiene(otro)) return true;
 		}
 		return false;
+	}
+	@Override
+	public void reservarCupo(int unidades) {
+		for (ItemCatalogo item : items) {
+			item.reservarCupo(unidades);
+		}
+	}
+	@Override
+	public void liberarCupo(int unidades) {
+		for (ItemCatalogo item : items) {
+			item.liberarCupo(unidades);
+		}
 	}
 }
