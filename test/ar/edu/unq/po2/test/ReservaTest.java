@@ -8,21 +8,18 @@ import static org.mockito.Mockito.when;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import ar.edu.unq.po2.integrador.ItemCatalogo;
-import ar.edu.unq.po2.integrador.Categoria;
 import ar.edu.unq.po2.integrador.Cupo;
 import ar.edu.unq.po2.integrador.EstadoCancelada;
 import ar.edu.unq.po2.integrador.EstadoConfirmada;
 import ar.edu.unq.po2.integrador.EstadoTraslado;
 import ar.edu.unq.po2.integrador.ItemCatalogo;
-
 import ar.edu.unq.po2.integrador.Reserva;
-import ar.edu.unq.po2.integrador.ServicioIndividual;
-import ar.edu.unq.po2.integrador.TrasladoEstandar;
 import ar.edu.unq.po2.integrador.Voucher;
+import ar.edu.unq.po2.integrador.Cliente;
 
 public class ReservaTest {
 	
+	private Cliente cliente;
 	private Reserva reserva;
 	private Cupo cupo;
 	private EstadoCancelada reservaCancelada;
@@ -33,7 +30,8 @@ public class ReservaTest {
     
     @BeforeEach
     void setUp() {
-    	reserva = new Reserva();
+    	cliente = new Cliente("Juan", "juan123@gmail.com");
+    	reserva = new Reserva(cliente);
     	cupo = new Cupo(6);
     	cupo.setReservados(4);
     	

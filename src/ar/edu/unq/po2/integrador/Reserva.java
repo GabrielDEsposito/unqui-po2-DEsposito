@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class Reserva {
+	private final Cliente cliente;
 	private List<ItemCatalogo> items = new ArrayList<>();
 	private List<Voucher> vouchers = new ArrayList<>();
 	//private float tazas;
@@ -13,13 +14,17 @@ public class Reserva {
 	private List<ObservadorReserva> observadores = new ArrayList<>();
 	private MetodoPago metodoPago;
 	
-	public Reserva() {
+	public Reserva(Cliente cliente) {
+		this.cliente = cliente;
 		this.items = new ArrayList<>();
 	    this.vouchers = new ArrayList<>();
 	    this.observadores = new ArrayList<>();
-	  
 		this.estadoActual = new EstadoSolicitudPendiente();
 		
+	}
+	
+	public String getEmailCliente() {
+		return this.cliente.getEmail();
 	}
 	
 	public List<Voucher> getVouchers(){
