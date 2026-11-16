@@ -1,32 +1,16 @@
 package ar.edu.unq.po2.integrador;
 
-public abstract class Catalogo {
+import java.util.ArrayList;
+import java.util.List;
 
-	private String nombre;
-	private String descripcion;
-	
-	
-	public Catalogo(String nombre, String descripcion) {
-        this.nombre = nombre;
-        this.descripcion = descripcion;
+public class Catalogo {
+    private final List<ItemCatalogo> items = new ArrayList<>();
+
+    public void agregar(ItemCatalogo item) {
+        items.add(item);
     }
-	
-	
-	public String getNombre() {
-		return nombre;
-	}
 
-
-
-	public abstract double getPrecioBase();
-
-
-
-	public String getDescripcion() {
-		return descripcion;
-	}
-
-	
-	
-	
+    public List<ItemCatalogo> buscar(CriterioBusqueda criterio) {
+        return items.stream().filter(criterio::cumple).toList();
+    }
 }

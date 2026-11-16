@@ -3,19 +3,19 @@ package ar.edu.unq.po2.integrador;
 public class EstadoSolicitudPendiente implements EstadoReserva {
 
 	@Override
-	public void agregarServicio(Reserva reserva, Catalogo item) {
+	public void agregarServicio(Reserva reserva, ItemCatalogo item) {
 		reserva.agregarServicio(item);
 		
 	}
 
 	@Override
-	public void quitarServicio(Reserva reserva, Catalogo item) {
+	public void quitarServicio(Reserva reserva, ItemCatalogo item) {
 		reserva.quitarServicio(item);
 		
 	}
 
 	@Override
-	public void confirmada_pagada(Reserva reserva, Catalogo item) {
+	public void confirmada_pagada(Reserva reserva, ItemCatalogo item) {
 		 reserva.setEstadoActual(new EstadoConfirmada());
 		
 	}

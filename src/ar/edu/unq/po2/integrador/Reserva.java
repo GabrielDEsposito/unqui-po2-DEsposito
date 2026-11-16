@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Reserva {
-	private List<Catalogo> items = new ArrayList<>();
+	private List<ItemCatalogo> items = new ArrayList<>();
 	private List<Voucher> vouchers = new ArrayList<>();
 	private int cuposDisponibles;
 	//private float tazas;
@@ -14,15 +14,21 @@ public class Reserva {
 		private MetodoPago  MetodoPago;
 	
 	
-	public void setEstadoActual(EstadoReserva estadoActual) {
-		this.estadoActual = estadoActual;
+	
+	public List<Voucher> getVouchers(){
+		return vouchers;
 	}
 	
-	public void agregarServicio(Catalogo item) {
+	public void setEstadoActual(EstadoReserva estadoActual) {
+		this.estadoActual = estadoActual;
+		this.notificarObservadores(estadoActual);
+	}
+	
+	public void agregarServicio(ItemCatalogo item) {
 		 items.add(item);
 	}
 	
-	public void quitarServicio(Catalogo item) {
+	public void quitarServicio(ItemCatalogo item) {
 		 items.remove(item);
 	} 
 	
@@ -48,6 +54,13 @@ public class Reserva {
         }
     }
 	
+	public int getCuposDisponibles() {
+		return cuposDisponibles;
+	}
+	
+	public void setCuposDisponibles(int numero) {
+		 this.cuposDisponibles = numero;
+	}
 	
 	public void liberarCupo() {
 		this.cuposDisponibles++;
@@ -56,7 +69,7 @@ public class Reserva {
 	
 	public float costoServicio() {
 		float totalServicios = 0;
-	    for (Catalogo item : items) {
+	    for (ItemCatalogo item : items) { //antes estaba Catalogo item
 	        totalServicios += item.getPrecioBase();
 	    }
 	    return totalServicios;
@@ -88,6 +101,15 @@ public class Reserva {
 	
 	public EstadoTraslado getEstrategiaDeTraslado() {
 		return trasladoActual;
+	}
+	
+	public void setEstrategiaDeTraslado(EstadoTraslado trasladoActual) {
+		this.trasladoActual = trasladoActual;
+	}
+	
+	public List<ItemCatalogo> getItems(){
+		return items;
+		
 	}
 
 	
