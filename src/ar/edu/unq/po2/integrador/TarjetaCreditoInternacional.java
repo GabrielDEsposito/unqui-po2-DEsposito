@@ -5,7 +5,6 @@ public class TarjetaCreditoInternacional extends MetodoPago {
     private String cvv;
     private String fechaVencimiento;
     private ItarjetaInternacional tarjetaInternacional;
-    private Double montoUltimaTransaccion;
     private List<Voucher> vouchers = new ArrayList<>();
 
     @Override
@@ -27,7 +26,7 @@ public class TarjetaCreditoInternacional extends MetodoPago {
     }
 
     @Override
-    protected void notificarResultado() {
+    protected void notificarResultado(double monto) {
         Voucher voucher = new Voucher(monto, this.getCodigoTransaccion());
         this.vouchers.add(voucher);
     }

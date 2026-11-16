@@ -4,5 +4,5 @@ public interface IBilleteraVirtualCrypto {
     boolean saldoSuficienteEnCuenta(double monto);
     void bloqueoDelSaldoHastaConfirmar(double monto);
     void acreditacionEnTiempoReal(double monto);
-    void notificacionPush();
+    void notificacionPush(double monto);
 }

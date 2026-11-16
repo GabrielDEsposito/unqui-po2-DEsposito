@@ -11,7 +11,7 @@ public abstract class MetodoPago {
 		this.ValidarDatos();
 		this.ReservarFondos(monto);
 		this.EjecutarTransacion(monto);
-		this.NotificarResultado();
+		this.NotificarResultado(monto);
 	}
 	
 	protected abstract void ValidarDatos();
