@@ -26,7 +26,7 @@ public class TransferenciaBancariaDirecta extends MetodoDePago {
     @Override
     protected void notificarResultado(double monto) {
         ComprobanteCBU comprobante = new ComprobanteCBU(cbu, alias, this.getCodigoTransaccion());
-        this.comprobantes.add(new ComprobanteCBU(cbu, alias, this.getCodigoTransaccion()));
+        this.comprobantes.add(comprobante);
     }
 
     public List<ComprobanteCBU> getComprobantes() {
