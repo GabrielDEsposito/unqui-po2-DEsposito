@@ -1,6 +1,7 @@
 package ar.edu.unq.po2.integrador;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Reserva {
@@ -10,7 +11,7 @@ public class Reserva {
 	private EstadoReserva estadoActual;
 	private EstadoTraslado trasladoActual;
 	private List<ObservadorReserva> observadores = new ArrayList<>();
-  private MetodoPago MetodoPago;
+	private MetodoPago metodoPago;
 	
 	public Reserva() {
 		this.estadoActual = new EstadoSolicitudPendiente();
@@ -18,6 +19,18 @@ public class Reserva {
 	
 	public List<Voucher> getVouchers(){
 		return vouchers;
+	}
+	
+	public void setMetodoPago(MetodoPago metodo) {
+		this.metodoPago = metodo;
+	}
+	
+	public MetodoPago getMetodoPago() {
+		return metodoPago;
+	}
+	
+	public EstadoReserva getEstadoActual() {
+		return estadoActual;
 	}
 	
 	public void setEstadoActual(EstadoReserva nuevo) {
@@ -48,7 +61,7 @@ public class Reserva {
 		observadores.remove(observador);
 	}
 	
-	public void notificarObservadores(EstadoReserva anterior, EstadoReserva nuevo) {
+	private void notificarObservadores(EstadoReserva anterior, EstadoReserva nuevo) {
 		for(ObservadorReserva obs: observadores) {
 			obs.actualizar(this, anterior, nuevo);
 		}
@@ -71,10 +84,10 @@ public class Reserva {
 		}
 	}
 	
-	public float costoServicio() {
+	public double costoServicio() {
 		float totalServicios = 0;
-	    for (ItemCatalogo item : items) { //antes estaba Catalogo item
-	        totalServicios += item.getPrecioBase();
+	    for (ItemCatalogo item : items) { 
+	        totalServicios += item.getPrecioFinal();
 	    }
 	    return totalServicios;
 	}
@@ -112,7 +125,7 @@ public class Reserva {
 	}
 	
 	public List<ItemCatalogo> getItems(){
-		return items;
+		return Collections.unmodifiableList(items);
 		
 	}
 

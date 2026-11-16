@@ -18,7 +18,10 @@ public class PaqueteTuristico extends ItemCatalogo{
     }	
 	
 	public void agregarItem(ItemCatalogo item) {
-        this.items.add(item);
+        if (item.contiene(this)) {
+        	throw new IllegalArgumentException("Un paquete no puede contenerse a si mismoi");
+        }
+        items.add(item);
     }
 
     public void quitarItem(ItemCatalogo item) {

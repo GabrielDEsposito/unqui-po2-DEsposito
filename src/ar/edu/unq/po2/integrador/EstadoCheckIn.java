@@ -41,9 +41,8 @@ public class EstadoCheckIn implements EstadoReserva{
 
 	@Override
 	public void cancelar(Reserva reserva) {
-		reserva.liberarCupo();
+		reserva.liberarCupos();
         reserva.procesarReembolsoCompleto();
         reserva.setEstadoActual(new EstadoCancelada());
-		
 	}
 }
