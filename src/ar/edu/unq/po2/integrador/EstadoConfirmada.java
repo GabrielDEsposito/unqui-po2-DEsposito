@@ -3,6 +3,11 @@ package ar.edu.unq.po2.integrador;
 public class EstadoConfirmada implements EstadoReserva{
 
 	@Override
+	public TipoEstado tipo() {
+		return TipoEstado.CONFIRMADA;
+	}
+	
+	@Override
 	public void agregarServicio(Reserva reserva, ItemCatalogo item) {
 		throw new OperacionInvalidaException("esta opcion no esta disponible");
 	}

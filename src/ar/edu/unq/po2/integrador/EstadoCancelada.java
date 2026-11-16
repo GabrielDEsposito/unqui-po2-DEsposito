@@ -3,6 +3,11 @@ package ar.edu.unq.po2.integrador;
 public class EstadoCancelada implements EstadoReserva{
 
 	@Override
+	public TipoEstado tipo() {
+		return TipoEstado.CANCELADA;
+	}
+	
+	@Override
 	public void agregarServicio(Reserva reserva, ItemCatalogo item) {
 		throw new OperacionInvalidaException("la reserva está cancelada”");
 		

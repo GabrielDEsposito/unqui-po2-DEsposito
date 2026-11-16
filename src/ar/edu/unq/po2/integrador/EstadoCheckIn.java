@@ -3,6 +3,11 @@ package ar.edu.unq.po2.integrador;
 public class EstadoCheckIn implements EstadoReserva{
 
 	@Override
+	public TipoEstado tipo() {
+		return TipoEstado.EN_CHECKIN;
+	}
+	
+	@Override
 	public void agregarServicio(Reserva reserva, ItemCatalogo item) {
 		throw new OperacionInvalidaException("la reserva se encuentra en estado de check-in.");
 		

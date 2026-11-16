@@ -3,6 +3,11 @@ package ar.edu.unq.po2.integrador;
 public class EstadoEnCurso implements EstadoReserva{
 
 	@Override
+	public TipoEstado tipo() {
+		return TipoEstado.EN_CURSO;
+	}
+	
+	@Override
 	public void agregarServicio(Reserva reserva, ItemCatalogo item) {
 		 throw new OperacionInvalidaException("el viaje/servicio esta en ejecucion.");
 		
