@@ -2,12 +2,18 @@ package ar.edu.unq.po2.integrador;
 
 public class Voucher {
 	    private double monto;
-
-	    public Voucher(double monto) {
-	        this.monto = monto;
-	    }
+		private String codigoTransaccion;
 
 	    public double getMonto() {
 	        return monto;
 	    }
+
+		public String getCodigoTransaccion() {
+			return codigoTransaccion;
+		}
+
+		public Voucher(double monto, String codigoTransaccion) {
+        this.monto = monto;
+        this.codigoTransaccion = codigoTransaccion;
+    }
 }

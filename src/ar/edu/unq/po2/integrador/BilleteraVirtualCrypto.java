@@ -1,21 +1,21 @@
 package ar.edu.unq.po2.integrador;
 
-public class BilleteraVirtualCrypto extends MetodoDePago {
+public class BilleteraVirtualCrypto extends MetodoPago {
     private int saldo;
     private IBilleteraVirtualCrypto BilleteraVirtualOCrypto;
 
     @Override
-    protected void validarDatos() {
+    protected void ValidarDatos() {
         BilleteraVirtualOCrypto.saldoSuficienteEnCuenta(saldo);
     }
 
     @Override
-    protected void reservarFondos(double monto) {
+    protected void ReservarFondos(double monto) {
         BilleteraVirtualOCrypto.bloqueoDelSaldoHastaConfirmar(monto);
     }
 
     @Override
-    protected void ejecutarTransaccion(double monto) {
+    protected void EjecutarTransacion(double monto) {
         BilleteraVirtualOCrypto.acreditacionEnTiempoReal(monto);
     }
 

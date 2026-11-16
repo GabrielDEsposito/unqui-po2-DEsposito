@@ -23,6 +23,6 @@ public class AtributoDinamico {
     if (valor == null || valor.isBlank()) {
         return !obligatorio;             
     }
-    return estrategia.esConsistente(valor); 
+    return estrategiaValidacion.esConsistente(valor); 
 }
 }

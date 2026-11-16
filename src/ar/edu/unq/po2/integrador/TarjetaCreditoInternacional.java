@@ -1,32 +1,35 @@
 package ar.edu.unq.po2.integrador;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class TarjetaCreditoInternacional extends MetodoPago {
-    private int NumeroTarjeta;
+    private int numeroTarjeta;
     private String cvv;
     private String fechaVencimiento;
     private ItarjetaInternacional tarjetaInternacional;
     private List<Voucher> vouchers = new ArrayList<>();
 
     @Override
-    protected void validarDatos() {
-        if (!tarjetaInternacional.validarDatosTarjeta(numeroTarjeta, cvv, vencimiento)) {
+    protected void ValidarDatos() {
+        if (!tarjetaInternacional.validarDatosTarjeta(numeroTarjeta, cvv, fechaVencimiento)) {
             throw new IllegalStateException("Datos de tarjeta inválidos");
         }
     }
 
     @Override
-    protected void reservarFondos(double monto) {
+    protected void ReservarFondos(double monto) {
         tarjetaInternacional.preAutorizacionDelBanco(monto);
         
     }
 
     @Override
-    protected void ejecutarTransaccion(double monto) {
+    protected void EjecutarTransacion(double monto) {
         tarjetaInternacional.transferenciaInmediata(monto);
     }
 
     @Override
-    protected void notificarResultado(double monto) {
+    protected void NotificarResultado(double monto) {
         Voucher voucher = new Voucher(monto, this.getCodigoTransaccion());
         this.vouchers.add(voucher);
     }
