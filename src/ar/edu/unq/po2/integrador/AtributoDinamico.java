@@ -19,7 +19,10 @@ public class AtributoDinamico {
         return obligatorio;
     }
 
-    public boolean esConsistente(String valor) {
-        return estrategiaValidacion.esConsistente(valor);
+    public boolean validarValor(String valor) {
+    if (valor == null || valor.isBlank()) {
+        return !obligatorio;             
     }
+    return estrategia.esConsistente(valor); 
+}
 }
