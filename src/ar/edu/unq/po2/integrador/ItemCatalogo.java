@@ -18,13 +18,16 @@ public abstract class ItemCatalogo {
 	public String getDescripcion() {
 		return descripcion;
 	}
+	
+	public boolean contiene(ItemCatalogo otro) {
+		return this == otro;
+	}
 
 	public abstract double getPrecioBase();
 	public abstract double getPrecioFinal();
 	public abstract boolean perteneceACategoria(Categoria categoria);
 	public abstract boolean tieneCupoDisponible();
+	public abstract void reservarCupo(int unidades);
+	public abstract void liberarCupo(int unidades);
 	
-	public boolean contiene(ItemCatalogo otro) {
-		return this == otro;
-	}
 }
