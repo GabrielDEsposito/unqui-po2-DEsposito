@@ -49,7 +49,7 @@ public class Reserva {
 	}
 
 	public void quitarServicio(ItemCatalogo item) {
-		this.items.remove(item); //estadoActual.quitarServicio(this, item);
+		this.items.remove(item); 
 	}
 	public void incorporarServicio(ItemCatalogo item) {
 		items.add(item);
