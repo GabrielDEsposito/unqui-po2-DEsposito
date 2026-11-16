@@ -6,32 +6,40 @@ import java.util.List;
 public class Reserva {
 	private List<ItemCatalogo> items = new ArrayList<>();
 	private List<Voucher> vouchers = new ArrayList<>();
-	private int cuposDisponibles;
 	//private float tazas;
 	private EstadoReserva estadoActual;
 	private EstadoTraslado trasladoActual;
 	private List<ObservadorReserva> observadores = new ArrayList<>();
-		private MetodoPago  MetodoPago;
+  private MetodoPago MetodoPago;
 	
-	
+	public Reserva() {
+		this.estadoActual = new EstadoSolicitudPendiente();
+	}
 	
 	public List<Voucher> getVouchers(){
 		return vouchers;
 	}
 	
-	public void setEstadoActual(EstadoReserva estadoActual) {
-		this.estadoActual = estadoActual;
-		this.notificarObservadores(estadoActual);
+	public void setEstadoActual(EstadoReserva nuevo) {
+		EstadoReserva anterior = this.estadoActual;
+		this.estadoActual = nuevo;
+		this.notificarObservadores(anterior, nuevo);
 	}
 	
 	public void agregarServicio(ItemCatalogo item) {
-		 items.add(item);
+		estadoActual.agregarServicio(this, item);
 	}
-	
+
 	public void quitarServicio(ItemCatalogo item) {
-		 items.remove(item);
-	} 
-	
+		estadoActual.quitarServicio(this, item);
+	}
+	public void incorporarServicio(ItemCatalogo item) {
+		items.add(item);
+	}
+
+	public void retirarServicio(ItemCatalogo item) {
+		items.remove(item);
+	}
 	public void agregarObservador(ObservadorReserva observador) {
 		observadores.add(observador);
 	}
@@ -40,32 +48,28 @@ public class Reserva {
 		observadores.remove(observador);
 	}
 	
-	public void notificarObservadores(EstadoReserva estadoActual) {
+	public void notificarObservadores(EstadoReserva anterior, EstadoReserva nuevo) {
 		for(ObservadorReserva obs: observadores) {
-			obs.actualizar(this, estadoActual);
+			obs.actualizar(this, anterior, nuevo);
 		}
 	}
 	
-	public void decrementarCupo() {
-        if (this.cuposDisponibles > 0) {
-            this.cuposDisponibles--;
-        } else {
-            throw new IllegalStateException("No hay cupos disponibles para decrementar.");
-        }
-    }
-	
-	public int getCuposDisponibles() {
-		return cuposDisponibles;
+	public void reservarCupos() {
+		for (ItemCatalogo item : items) {
+			if (!item.tieneCupoDisponible()) {
+				throw new CupoInsuficienteException("Sin cupo para: " + item.getNombre());
+			}
+		}
+		for (ItemCatalogo item : items) {
+			item.reservarCupo(1);
+		}
 	}
-	
-	public void setCuposDisponibles(int numero) {
-		 this.cuposDisponibles = numero;
+
+	public void liberarCupos() {
+		for (ItemCatalogo item : items) {
+			item.liberarCupo(1);
+		}
 	}
-	
-	public void liberarCupo() {
-		this.cuposDisponibles++;
-	}
-	
 	
 	public float costoServicio() {
 		float totalServicios = 0;
@@ -112,12 +116,24 @@ public class Reserva {
 		
 	}
 
-	
-	
+	public void confirmar() {
+		estadoActual.confirmar(this);
+	}
 
-	
+	public void hacerCheckIn() {
+		estadoActual.hacerCheckIn(this);
+	}
 
-	
+	public void iniciar() {
+		estadoActual.iniciar(this);
+	}
 
+	public void finalizar() {
+		estadoActual.finalizar(this);
+	}
+
+	public void cancelar() {
+		estadoActual.cancelar(this);
+	}
 	
 }

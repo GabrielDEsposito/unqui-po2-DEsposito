@@ -4,47 +4,42 @@ public class EstadoEnCurso implements EstadoReserva{
 
 	@Override
 	public void agregarServicio(Reserva reserva, ItemCatalogo item) {
-		 throw new IllegalStateException("el viaje/servicio esta en ejecucion.");
+		 throw new OperacionInvalidaException("el viaje/servicio esta en ejecucion.");
 		
 	}
 
 	@Override
 	public void quitarServicio(Reserva reserva, ItemCatalogo item) {
-		 throw new IllegalStateException("el viaje/servicio esta en ejecucion.");
+		 throw new OperacionInvalidaException("el viaje/servicio esta en ejecucion.");
 		
 	}
 
 	@Override
-	public void confirmada_pagada(Reserva reserva, ItemCatalogo itemm) {
-		 throw new IllegalStateException("el viaje/servicio esta en ejecucion.");
+	public void confirmar(Reserva reserva) {
+		 throw new OperacionInvalidaException("el viaje/servicio esta en ejecucion.");
 		
 	}
 
 	@Override
-	public void en_checkIn(Reserva reserva) {
-		 throw new IllegalStateException("el viaje/servicio esta en ejecucion.");
+	public void hacerCheckIn(Reserva reserva) {
+		 throw new OperacionInvalidaException("el viaje/servicio esta en ejecucion.");
 		
 	}
 
 	@Override
-	public void en_curso(Reserva reserva) {
-		 throw new IllegalStateException("el viaje/servicio esta en ejecucion.");
+	public void iniciar(Reserva reserva) {
+		 throw new OperacionInvalidaException("el viaje/servicio esta en ejecucion.");
 		
 	}
 
 	@Override
-	public void finalizada(Reserva reserva) {
+	public void finalizar(Reserva reserva) {
 		 reserva.setEstadoActual(new EstadoFinalizada());
-		
 	}
 
 	@Override
-	public void cancelada(Reserva reserva) {
+	public void cancelar(Reserva reserva) {
 		 reserva.reembolsarServicios();
 		 reserva.setEstadoActual(new EstadoCancelada());
-		
 	}
-
-
-
 }

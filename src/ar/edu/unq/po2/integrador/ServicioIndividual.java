@@ -48,13 +48,15 @@ public class ServicioIndividual extends ItemCatalogo{
 		return this.categoria == categoria;
 	}
 	@Override
+	public void reservarCupo(int unidades) {
+		cupo.reservar(unidades);
+	}
+	@Override
+	public void liberarCupo(int unidades) {
+		cupo.liberar(unidades);
+	}
+	@Override
 	public boolean tieneCupoDisponible() {
 		return cupo.hayDisponible();
 	}
-
-
-
-
-	
-
 }

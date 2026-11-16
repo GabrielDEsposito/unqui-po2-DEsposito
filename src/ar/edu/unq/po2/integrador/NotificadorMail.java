@@ -8,8 +8,8 @@ public class NotificadorMail implements ObservadorReserva{
 	}
 	
 	@Override
-	public void actualizar(Reserva reserva, EstadoReserva estado) {
-		if (estado instanceof EstadoConfirmada || estado instanceof EstadoEnCurso || estado instanceof EstadoFinalizada) {
+	public void actualizar(Reserva reserva, EstadoReserva anterior, EstadoReserva nuevo) {
+		if (nuevo instanceof EstadoConfirmada || nuevo instanceof EstadoEnCurso || nuevo instanceof EstadoFinalizada) {
 			mailSender.enviarMail(String direccionDestino, String titulo, String mensaje, Object adjunto);
 		}
 	}

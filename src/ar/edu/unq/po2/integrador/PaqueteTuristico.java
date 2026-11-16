@@ -72,4 +72,16 @@ public class PaqueteTuristico extends ItemCatalogo{
 		}
 		return false;
 	}
+	@Override
+	public void reservarCupo(int unidades) {
+		for (ItemCatalogo item : items) {
+			item.reservarCupo(unidades);
+		}
+	}
+	@Override
+	public void liberarCupo(int unidades) {
+		for (ItemCatalogo item : items) {
+			item.liberarCupo(unidades);
+		}
+	}
 }

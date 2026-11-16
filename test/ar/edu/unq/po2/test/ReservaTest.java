@@ -46,7 +46,7 @@ public class ReservaTest {
     @Test
     void testElclienteConfirmaReservaYseRestaCupo() {
     	estadoConfirmada = new EstadoConfirmada();
-		estadoConfirmada.confirmada_pagada(reserva, ExcursiónGuiadaMuseo);
+		estadoConfirmada.confirmar(reserva);
 		assertEquals(4, reserva.getCuposDisponibles());
     }
     
