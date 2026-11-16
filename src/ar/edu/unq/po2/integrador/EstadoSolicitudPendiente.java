@@ -45,4 +45,3 @@ public class EstadoSolicitudPendiente implements EstadoReserva {
 	}
 
 }
-//asd

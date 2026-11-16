@@ -104,7 +104,7 @@ public class Reserva {
 	}
 	
 	public void procesarReembolsoCompleto() {
-	    double totalReembolso = this.costoServicio() + this.costoTraslado(); 
+	    double totalReembolso = this.costoServicio() + this.costoTraslado(); //asd
 	    this.generarVoucherReembolso(totalReembolso);
 	    
 	}

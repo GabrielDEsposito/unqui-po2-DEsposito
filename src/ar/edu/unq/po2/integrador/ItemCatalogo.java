@@ -31,4 +31,3 @@ public abstract class ItemCatalogo {
 	public abstract void liberarCupo(int unidades);
 	
 }
-//asd

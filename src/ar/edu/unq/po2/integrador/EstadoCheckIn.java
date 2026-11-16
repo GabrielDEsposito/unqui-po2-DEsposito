@@ -46,4 +46,3 @@ public class EstadoCheckIn implements EstadoReserva{
         reserva.setEstadoActual(new EstadoCancelada());
 	}
 }
-//asd

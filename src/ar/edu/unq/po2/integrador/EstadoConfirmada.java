@@ -43,7 +43,7 @@ public class EstadoConfirmada implements EstadoReserva{
 	}
 
 
-//asd
+
 
 
 }
