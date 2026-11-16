@@ -37,4 +37,11 @@ class AtributoDinamicoTest {
         hotel.asignarValor("CapacidadMaxima", "40");
         assertTrue(hotel.esValido());
     }
+
+    @Test
+    void servicioConValorDelTipoIncorrectoEsInvalido() {
+        hotel.agregarAtributo(new AtributoDinamico("CapacidadMaxima", true, new ValidacionNumerico()));
+        hotel.asignarValor("CapacidadMaxima", "muchas");
+        assertFalse(hotel.esValido());
+    }
 }
