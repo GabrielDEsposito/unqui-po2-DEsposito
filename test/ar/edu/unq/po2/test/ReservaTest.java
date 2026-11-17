@@ -80,7 +80,18 @@ public class ReservaTest {
 
     	    assertEquals(10000.0, voucherGenerado.getMonto(), 0.01);
     	   
-    }
+    } //este test hace el reembolso completo servicios + traslado
     
-   //funciona
+    @Test
+    void testReembolsarServiciosGeneraVoucherSoloConElCostoDeLosServicios() {
+        when(ExcursiónGuiadaMuseo.getPrecioFinal()).thenReturn(5000.0);
+        reserva.agregarServicio(ExcursiónGuiadaMuseo);
+
+        reserva.reembolsarServicios();
+
+        assertEquals(1, reserva.getVouchers().size());
+        assertEquals(5000.0, reserva.getVouchers().get(0).getMonto(), 0.01);
+    }//este test hace el reembolso solamente de servicios
+    
+   
 }

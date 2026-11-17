@@ -40,7 +40,7 @@ public class ServicioIndividual extends ItemCatalogo{
 	}
 	public String getProveedor() {
 		return proveedor;
-	}
+	}//asd
 	
 	@Override
 	public double getPrecioFinal() {
