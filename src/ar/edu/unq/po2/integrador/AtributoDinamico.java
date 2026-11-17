@@ -24,5 +24,7 @@ public class AtributoDinamico {
         return !obligatorio;             
     }
     return estrategiaValidacion.esConsistente(valor); 
-}
+    }
+    
+    
 }

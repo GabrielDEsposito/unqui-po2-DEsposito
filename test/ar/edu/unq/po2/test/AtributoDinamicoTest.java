@@ -10,12 +10,20 @@ class AtributoDinamicoTest {
 
     private Cupo cupo;
     private ServicioIndividual hotel;
-
+    private EstrategiaValidacion estrategia;
+    private AtributoDinamico obligatorio;
+    private AtributoDinamico opcional;
+    
+    
     @BeforeEach
     void setUp() {
         cupo = mock(Cupo.class);
         hotel = new ServicioIndividual(1, "Noche de Hotel Central", "Hotel 4 estrellas",
                 "Hoteles SA", Categoria.ALOJAMIENTO, 15000, 0, cupo);
+        
+        estrategia = mock(EstrategiaValidacion.class);
+        obligatorio = new AtributoDinamico("email", true, estrategia);
+        opcional = new AtributoDinamico("apodo", false, estrategia);
     }
 
     @Test
@@ -43,5 +51,13 @@ class AtributoDinamicoTest {
         hotel.agregarAtributo(new AtributoDinamico("CapacidadMaxima", true, new ValidacionNumerico()));
         hotel.asignarValor("CapacidadMaxima", "muchas");
         assertFalse(hotel.esValido());
+    }
+    
+    @Test
+    void laEstrategiaPuedeCambiarDeRespuestaEntreLlamadas() {
+        when(estrategia.esConsistente("valor")).thenReturn(true, false);
+
+        assertTrue(obligatorio.validarValor("valor"));
+        assertFalse(obligatorio.validarValor("valor"));
     }
 }
