@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Reserva {
+public class Reserva implements Visitable {
 	private final Cliente cliente;
 	private List<ItemCatalogo> items = new ArrayList<>();
 	private List<Voucher> vouchers = new ArrayList<>();
@@ -159,4 +159,8 @@ public class Reserva {
 		estadoActual.cancelar(this);
 	}
 	
+    @Override
+    public void aceptar(ReporteVisitor visitor) { 
+		visitor.visitarReserva(this); 
+	}
 }

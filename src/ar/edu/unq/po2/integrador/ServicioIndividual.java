@@ -81,4 +81,8 @@ public class ServicioIndividual extends ItemCatalogo{
             .allMatch(a -> a.validarValor(valores.get(a.getNombre())));
 	}
 
+	@Override
+    public void aceptar(ReporteVisitor visitor) { 
+		visitor.visitarServicio(this); 
+	}
 }

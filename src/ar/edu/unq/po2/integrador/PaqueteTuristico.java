@@ -87,4 +87,9 @@ public class PaqueteTuristico extends ItemCatalogo{
 			item.liberarCupo(unidades);
 		}
 	}
+
+	@Override
+    public void aceptar(ReporteVisitor visitor) { 
+		visitor.visitarPaquete(this); 
+	}
 }
