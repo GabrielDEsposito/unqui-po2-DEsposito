@@ -14,3 +14,4 @@ public abstract class ReporteVisitorAdapter implements ReporteVisitor {
 
     }
 }
+
