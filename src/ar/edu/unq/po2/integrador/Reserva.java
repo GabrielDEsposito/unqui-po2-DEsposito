@@ -13,6 +13,7 @@ public class Reserva implements Visitable {
 	private EstadoTraslado trasladoActual;
 	private List<ObservadorReserva> observadores = new ArrayList<>();
 	private MetodoPago metodoPago;
+	private String fecha;
 	
 	public Reserva(Cliente cliente) {
 		this.cliente = cliente;
@@ -162,5 +163,12 @@ public class Reserva implements Visitable {
     @Override
     public void aceptar(ReporteVisitor visitor) { 
 		visitor.visitarReserva(this); 
+	}
+
+	public String getFecha() { return fecha; }
+	public void setFecha(String fecha) { this.fecha = fecha; }
+
+	public boolean estaEnPeriodo(String desde, String hasta) {
+    return fecha != null && fecha.compareTo(desde) >= 0 && fecha.compareTo(hasta) <= 0;
 	}
 }
