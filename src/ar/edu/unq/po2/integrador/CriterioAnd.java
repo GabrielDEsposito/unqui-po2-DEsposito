@@ -13,5 +13,4 @@ public class CriterioAnd implements CriterioBusqueda {
     public boolean cumple(ItemCatalogo item) {
         return criterios.stream().allMatch(c -> c.cumple(item));
     }
-    
 }

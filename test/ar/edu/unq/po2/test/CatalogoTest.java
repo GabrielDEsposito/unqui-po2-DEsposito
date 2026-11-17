@@ -50,6 +50,4 @@ public class CatalogoTest {
 	void catalogoVacioDevuelveListaVacia() {
 		assertTrue(new Catalogo().buscar(new CriterioNombre("x")).isEmpty());
 	}
-	
-	
 }

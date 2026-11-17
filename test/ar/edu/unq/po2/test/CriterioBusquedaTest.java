@@ -100,5 +100,4 @@ public class CriterioBusquedaTest {
 						new CriterioCategoria(Categoria.EXCURSION))).cumple(hotel));
 	}
 	
-	
 }

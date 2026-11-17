@@ -13,5 +13,4 @@ public class CriterioOr implements CriterioBusqueda {
     public boolean cumple(ItemCatalogo item) {
         return criterios.stream().anyMatch(c -> c.cumple(item));
     }
-    
 }
