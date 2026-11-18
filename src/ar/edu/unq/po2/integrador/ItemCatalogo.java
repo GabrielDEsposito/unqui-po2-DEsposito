@@ -1,6 +1,6 @@
 package ar.edu.unq.po2.integrador;
 
-public abstract class ItemCatalogo {
+public abstract class ItemCatalogo implements Visitable{
 
 	private String nombre;
 	private String descripcion;

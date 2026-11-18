@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Reserva {
+public class Reserva implements Visitable {
 	private final Cliente cliente;
 	private List<ItemCatalogo> items = new ArrayList<>();
 	private List<Voucher> vouchers = new ArrayList<>();
@@ -13,6 +13,7 @@ public class Reserva {
 	private EstadoTraslado trasladoActual;
 	private List<ObservadorReserva> observadores = new ArrayList<>();
 	private MetodoPago metodoPago;
+	private String fecha;
 	
 	public Reserva(Cliente cliente) {
 		this.cliente = cliente;
@@ -159,4 +160,15 @@ public class Reserva {
 		estadoActual.cancelar(this);
 	}
 	
+    @Override
+    public void aceptar(ReporteVisitor visitor) { 
+		visitor.visitarReserva(this); 
+	}
+
+	public String getFecha() { return fecha; }
+	public void setFecha(String fecha) { this.fecha = fecha; }
+
+	public boolean estaEnPeriodo(String desde, String hasta) {
+    return fecha != null && fecha.compareTo(desde) >= 0 && fecha.compareTo(hasta) <= 0;
+	}
 }

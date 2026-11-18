@@ -24,7 +24,7 @@ public class TarjetaCreditoInternacional extends MetodoPago {
     }
 
     @Override
-    public void EjecutarTransacion(double monto) {
+    public void EjecutarTransaccion(double monto) {
         tarjetaInternacional.transferenciaInmediata(monto);
     }
 
