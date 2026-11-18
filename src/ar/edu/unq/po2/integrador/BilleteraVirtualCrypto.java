@@ -4,6 +4,11 @@ public class BilleteraVirtualCrypto extends MetodoPago {
     private int saldo;
     private IBilleteraVirtualCrypto BilleteraVirtualOCrypto;
 
+    public BilleteraVirtualCrypto(int saldo, IBilleteraVirtualCrypto servicio) {
+        this.saldo = saldo;
+        this.BilleteraVirtualOCrypto = servicio;
+    }
+    
     @Override
 	public void ValidarDatos() {
         BilleteraVirtualOCrypto.saldoSuficienteEnCuenta(saldo);
