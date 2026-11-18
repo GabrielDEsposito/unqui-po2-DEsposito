@@ -34,14 +34,12 @@ public class EstadoCheckIn implements EstadoReserva{
 
 	@Override
 	public void iniciar(Reserva reserva) {
-		throw new OperacionInvalidaException("la reserva se encuentra en estado de check-in.");
-		
+		reserva.setEstadoActual(new EstadoEnCurso());
 	}
 
 	@Override
 	public void finalizar(Reserva reserva) {
-		 reserva.setEstadoActual(new EstadoFinalizada());
-		
+		throw new OperacionInvalidaException("la reserva se encuentra en estado de check-in.");
 	}
 
 	@Override

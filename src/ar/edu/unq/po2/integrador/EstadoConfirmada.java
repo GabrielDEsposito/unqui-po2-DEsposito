@@ -20,8 +20,8 @@ public class EstadoConfirmada implements EstadoReserva{
 
 	@Override
 	public void confirmar(Reserva reserva) {
-		reserva.reservarCupos();
-	} 
+		throw new OperacionInvalidaException("la reserva ya está confirmada");
+	}
 
 	@Override
 	public void hacerCheckIn(Reserva reserva) {
