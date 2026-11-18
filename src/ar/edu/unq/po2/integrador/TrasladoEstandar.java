@@ -5,6 +5,13 @@ public class TrasladoEstandar implements EstadoTraslado {
     private String direccionDestino;
     private PlataformaTransporte plataformaTransporte;
 	
+    public TrasladoEstandar(int cantidadPasajeros, String direccionDestino,
+            PlataformaTransporte plataformaTransporte) {
+    		this.cantidadPasajeros = cantidadPasajeros;
+    		this.direccionDestino = direccionDestino;
+    		this.plataformaTransporte = plataformaTransporte;
+    }
+    
     public TrasladoEstandar(int cantidadPasajeros, String direccionDestino) {
         this.cantidadPasajeros = cantidadPasajeros;
         this.direccionDestino = direccionDestino;

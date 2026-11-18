@@ -1,5 +1,7 @@
 package ar.edu.unq.po2.test;
 
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 import static org.mockito.Mockito.mock;
@@ -50,5 +52,40 @@ class TarjetaCreditoInternacionalTest {
         } catch (IllegalStateException e) {
             assertEquals("Datos de tarjeta inválidos", e.getMessage());
         }
+    }
+    
+    @Test
+    void reservarFondosPideLaPreautorizacionAlBanco() {
+        tarjeta.ReservarFondos(500.0);
+
+        verify(servicio).preAutorizacionDelBanco(500.0);
+    }
+
+    @Test
+    void ejecutarTransaccionHaceLaTransferenciaInmediata() {
+        tarjeta.EjecutarTransaccion(500.0);
+
+        verify(servicio).transferenciaInmediata(500.0);
+    }
+
+    @Test
+    void alCrearseNoTieneVouchers() {
+        assertTrue(tarjeta.getVouchers().isEmpty());
+    }
+
+    @Test
+    void notificarResultadoGeneraUnVoucher() {
+        tarjeta.NotificarResultado(500.0);
+
+        assertEquals(1, tarjeta.getVouchers().size());
+        assertNotNull(tarjeta.getVouchers().get(0));
+    }
+
+    @Test
+    void notificarResultadoVariasVecesAcumulaVouchers() {
+        tarjeta.NotificarResultado(100.0);
+        tarjeta.NotificarResultado(200.0);
+
+        assertEquals(2, tarjeta.getVouchers().size());
     }
 }
