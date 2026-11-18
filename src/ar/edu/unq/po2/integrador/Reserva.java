@@ -24,10 +24,6 @@ public class Reserva implements Visitable {
 		
 	}
 	
-	public String getEmailCliente() {
-		return this.cliente.getEmail();
-	}
-	
 	public Cliente getCliente() {
 		return cliente;
 	}
