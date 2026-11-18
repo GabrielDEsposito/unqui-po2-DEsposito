@@ -2,6 +2,7 @@ package ar.edu.unq.po2.test;
 
 import ar.edu.unq.po2.integrador.*;
 
+import static org.junit.Assert.assertSame;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
@@ -20,4 +21,12 @@ class ReporteOcupacionTest {
         verify(visitor).visitar(reporte);
     }
     
+    @Test
+    void conservaLasFilasRecibidas() {
+        FilaOcupacion fila = mock(FilaOcupacion.class);
+        ReporteOcupacion reporte = new ReporteOcupacion(List.of(fila));
+
+        assertEquals(1, reporte.getFilas().size());
+        assertSame(fila, reporte.getFilas().get(0));
+    }
 }
