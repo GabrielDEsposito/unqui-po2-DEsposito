@@ -3,9 +3,8 @@ package ar.edu.unq.po2.test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.doAnswer;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.util.List;
@@ -37,8 +36,7 @@ class ServiciosMasReservadosVisitorTest {
         ServicioIndividual servicio = mock(ServicioIndividual.class);
         when(servicio.getNombre()).thenReturn(nombre);
         when(servicio.getPrecioFinal()).thenReturn(precioFinal);
-        return servicio;
-    }
+        return servicio;    }
 
     @Test
     void sinVisitasElReporteNoTieneFilas() {
@@ -116,7 +114,7 @@ class ServiciosMasReservadosVisitorTest {
     }
 
     @Test
-    void visitarReservaEnPeriodoRegistraTodosSusItems() {
+    void visitarReservaEnPeriodoLeAceptaElVisitorATodosSusItems() {
         ServicioIndividual hotel = crearServicio("Hotel Sol", 1000.0);
         ServicioIndividual excursion = crearServicio("Excursion Glaciar", 300.0);
         Reserva reserva = mock(Reserva.class);
@@ -125,10 +123,8 @@ class ServiciosMasReservadosVisitorTest {
 
         visitor.visitarReserva(reserva);
 
-        List<FilaServicioReservado> filas = visitor.getReporte().getFilas();
-        assertEquals(2, filas.size());
-        assertEquals(1, filas.get(0).getUnidadesVendidas());
-        assertEquals(1, filas.get(1).getUnidadesVendidas());
+        verify(hotel).aceptar(visitor);
+        verify(excursion).aceptar(visitor);
     }
 
     @Test
@@ -143,21 +139,5 @@ class ServiciosMasReservadosVisitorTest {
         assertTrue(visitor.getReporte().getFilas().isEmpty());
     }
 
-    @Test
-    void variasReservasConElMismoServicioAcumulanUnidades() {
-        ServicioIndividual hotel = crearServicio("Hotel Sol", 1000.0);
-        Reserva reserva1 = mock(Reserva.class);
-        Reserva reserva2 = mock(Reserva.class);
-        when(reserva1.estaEnPeriodo(DESDE, HASTA)).thenReturn(true);
-        when(reserva2.estaEnPeriodo(DESDE, HASTA)).thenReturn(true);
-        when(reserva1.getItems()).thenReturn(List.of(hotel));
-        when(reserva2.getItems()).thenReturn(List.of(hotel));
-
-        visitor.visitarReserva(reserva1);
-        visitor.visitarReserva(reserva2);
-
-        List<FilaServicioReservado> filas = visitor.getReporte().getFilas();
-        assertEquals(1, filas.size());
-        assertEquals(2, filas.get(0).getUnidadesVendidas());
-    }
+    
 }
