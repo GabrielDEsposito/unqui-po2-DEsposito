@@ -69,7 +69,7 @@ class ServiciosMasReservadosVisitorTest {
         assertEquals(1, filas.size());
         assertEquals(2, filas.get(0).getUnidadesVendidas());
         assertEquals(1000.0, filas.get(0).getPrecioPromedioCobrado(), 0.0001);
-    }
+    }//k
 
     @Test
     void elPrecioPromedioSeCalculaConLoEfectivamenteCobrado() {
