@@ -36,8 +36,8 @@ public class EstadosReservaTest {
 		EstadoReserva e = new EstadoSolicitudPendiente();
 		e.agregarServicio(reserva, item);
 		e.quitarServicio(reserva, item);
-		verify(reserva).incorporarServicio(item);
-		verify(reserva).retirarServicio(item);
+		verify(reserva).agregarServicio(item);
+		verify(reserva).quitarServicio(item);
 	}
 
 	@Test
