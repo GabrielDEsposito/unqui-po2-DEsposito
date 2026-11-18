@@ -10,6 +10,13 @@ public class TarjetaCreditoInternacional extends MetodoPago {
     private ItarjetaInternacional tarjetaInternacional;
     private List<Voucher> vouchers = new ArrayList<>();
 
+    public TarjetaCreditoInternacional(int numeroTarjeta, String cvv, String fechaVencimiento,ItarjetaInternacional tarjetaInternacional) {
+    		this.numeroTarjeta = numeroTarjeta;
+    		this.cvv = cvv;
+    		this.fechaVencimiento = fechaVencimiento;
+    		this.tarjetaInternacional = tarjetaInternacional;
+    }
+    
     @Override
 	public void ValidarDatos() {
         if (!tarjetaInternacional.validarDatosTarjeta(numeroTarjeta, cvv, fechaVencimiento)) {
