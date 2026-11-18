@@ -33,4 +33,41 @@ abstract class FormatoReporteTest {
         assertTrue(salida.contains("unidades: 2"));
         assertTrue(salida.contains("precio promedio cobrado: 18900.0"));
     }
+
+    @Test
+    void formateaOcupacion() {
+        FilaOcupacion fila = mock(FilaOcupacion.class);
+        when(fila.getCategoria()).thenReturn(Categoria.ALOJAMIENTO);
+        when(fila.getPeriodo()).thenReturn("2026");
+        when(fila.getTotales()).thenReturn(10);
+        when(fila.getReservados()).thenReturn(3);
+        when(fila.getLibres()).thenReturn(7);
+
+        ReporteOcupacion reporte = mock(ReporteOcupacion.class);
+        when(reporte.getFilas()).thenReturn(List.of(fila));
+
+        String salida = formato().visitar(reporte);
+
+        assertTrue(salida.contains(etiqueta()));
+        assertTrue(salida.contains("ALOJAMIENTO (2026)"));
+        assertTrue(salida.contains("totales: 10"));
+        assertTrue(salida.contains("reservados: 3"));
+        assertTrue(salida.contains("libres: 7"));
+    }
+
+    @Test
+    void formateaExposicionProveedor() {
+        FilaExposicion fila = mock(FilaExposicion.class);
+        when(fila.getProveedor()).thenReturn("Hoteles SA");
+        when(fila.getPorcentajeCatalogo()).thenReturn(66.5);
+
+        ReporteExposicionProveedor reporte = mock(ReporteExposicionProveedor.class);
+        when(reporte.getFilas()).thenReturn(List.of(fila));
+
+        String salida = formato().visitar(reporte);
+
+        assertTrue(salida.contains(etiqueta()));
+        assertTrue(salida.contains("Hoteles SA"));
+        assertTrue(salida.contains("66.5% del catálogo"));
+    }
 }
