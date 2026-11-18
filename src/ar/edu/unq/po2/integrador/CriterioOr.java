@@ -5,7 +5,7 @@ import java.util.List;
 public class CriterioOr implements CriterioBusqueda {
     private final List<CriterioBusqueda> criterios;
 
-    public CriterioOr(CriterioBusqueda criterios) {
+    public CriterioOr(CriterioBusqueda... criterios) {
         this.criterios = List.of(criterios);
     }
 

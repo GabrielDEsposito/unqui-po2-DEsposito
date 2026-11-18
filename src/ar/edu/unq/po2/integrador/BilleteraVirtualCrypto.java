@@ -5,22 +5,22 @@ public class BilleteraVirtualCrypto extends MetodoPago {
     private IBilleteraVirtualCrypto BilleteraVirtualOCrypto;
 
     @Override
-    protected void ValidarDatos() {
+	public void ValidarDatos() {
         BilleteraVirtualOCrypto.saldoSuficienteEnCuenta(saldo);
     }
 
     @Override
-    protected void ReservarFondos(double monto) {
+	public void ReservarFondos(double monto) {
         BilleteraVirtualOCrypto.bloqueoDelSaldoHastaConfirmar(monto);
     }
 
     @Override
-    protected void EjecutarTransacion(double monto) {
+	public void EjecutarTransaccion(double monto) {
         BilleteraVirtualOCrypto.acreditacionEnTiempoReal(monto);
     }
 
     @Override
-    protected void NotificarResultado(double monto) {
+	public void NotificarResultado(double monto) {
         BilleteraVirtualOCrypto.notificacionPush(monto);
     }
 }

@@ -11,25 +11,25 @@ public class TarjetaCreditoInternacional extends MetodoPago {
     private List<Voucher> vouchers = new ArrayList<>();
 
     @Override
-    protected void ValidarDatos() {
+	public void ValidarDatos() {
         if (!tarjetaInternacional.validarDatosTarjeta(numeroTarjeta, cvv, fechaVencimiento)) {
             throw new IllegalStateException("Datos de tarjeta inválidos");
         }
     }
 
     @Override
-    protected void ReservarFondos(double monto) {
+    public void ReservarFondos(double monto) {
         tarjetaInternacional.preAutorizacionDelBanco(monto);
         
     }
 
     @Override
-    protected void EjecutarTransacion(double monto) {
+    public void EjecutarTransacion(double monto) {
         tarjetaInternacional.transferenciaInmediata(monto);
     }
 
     @Override
-    protected void NotificarResultado(double monto) {
+    public void NotificarResultado(double monto) {
         Voucher voucher = new Voucher(monto);
         this.vouchers.add(voucher);
     }
