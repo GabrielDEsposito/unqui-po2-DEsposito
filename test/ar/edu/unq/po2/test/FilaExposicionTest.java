@@ -26,5 +26,11 @@ public class FilaExposicionTest {
         assertEquals(35.5, fila.getPorcentajeCatalogo(), 0.001);
     }
 
-    
+    @Test
+    void testProveedorConTodoElCatalogo() {
+        FilaExposicion total = new FilaExposicion("Aperam", 100.0);
+
+        assertEquals("Aperam", total.getProveedor());
+        assertEquals(100.0, total.getPorcentajeCatalogo(), 0.001);
+    }
 }
