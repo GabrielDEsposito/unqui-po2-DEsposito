@@ -31,4 +31,12 @@ public class FilaServicioReservadoTest {
         assertEquals(1500.50, fila.getPrecioPromedioCobrado(), 0.001);
     }
 
+    @Test
+    void testFilaConValoresEnCero() {
+        FilaServicioReservado vacia = new FilaServicioReservado("Sin ventas", 0, 0.0);
+
+        assertEquals("Sin ventas", vacia.getNombre());
+        assertEquals(0, vacia.getUnidadesVendidas());
+        assertEquals(0.0, vacia.getPrecioPromedioCobrado(), 0.001);
+    }
 }
