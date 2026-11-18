@@ -28,6 +28,10 @@ public class Reserva implements Visitable {
 		return this.cliente.getEmail();
 	}
 	
+	public Cliente getCliente() {
+		return cliente;
+	}
+	
 	public List<Voucher> getVouchers(){
 		return vouchers;
 	}
@@ -51,18 +55,11 @@ public class Reserva implements Visitable {
 	}
 	
 	public void agregarServicio(ItemCatalogo item) {
-		this.items.add(item); //estadoActual.agregarServicio(this, item);
+		items.add(item); //estadoActual.agregarServicio(this, item);
 	}
 
 	public void quitarServicio(ItemCatalogo item) {
-		this.items.remove(item); 
-	}
-	public void incorporarServicio(ItemCatalogo item) {
-		items.add(item);
-	}
-
-	public void retirarServicio(ItemCatalogo item) {
-		items.remove(item);
+		items.remove(item); 
 	}
 	public void agregarObservador(ObservadorReserva observador) {
 		observadores.add(observador);
