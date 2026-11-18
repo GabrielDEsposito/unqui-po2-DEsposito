@@ -53,4 +53,10 @@ public class FilaOcupacionTest {
         assertEquals(0, llena.getLibres());
     }
 
+    @Test
+    void testLibresCuandoNoHayReservas() {
+        FilaOcupacion vacia = new FilaOcupacion(categoria, "2026-12", 10, 0);
+
+        assertEquals(10, vacia.getLibres());
+    }
 }
