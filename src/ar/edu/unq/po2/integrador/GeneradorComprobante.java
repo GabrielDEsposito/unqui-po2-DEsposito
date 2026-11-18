@@ -14,9 +14,6 @@ public class GeneradorComprobante implements ObservadorReserva{
 	}
 	
 	private void crearComprobanteFiscalYVoucher(Reserva reserva) {
-		double monto = reserva.costoServicio();
-		Voucher voucher = new Voucher(monto);
-		
-		// Falta terminar de implementar esta parte
+		reserva.registrarVoucher(new Voucher(reserva.costoServicio()));
 	}
 }

@@ -96,7 +96,10 @@ public class Reserva implements Visitable {
 	    return totalServicios;
 	}
 	
-	
+	public void registrarVoucher(Voucher v) {
+		vouchers.add(v);
+	}
+	 	
 	public void generarVoucherReembolso(double monto) {
 	    Voucher voucher = new Voucher(monto);
 	    this.vouchers.add(voucher);
@@ -112,8 +115,6 @@ public class Reserva implements Visitable {
 		double totalReembolso = this.costoServicio();
 	    this.generarVoucherReembolso(totalReembolso);
 	}	
-	
-	
 	
 	private double costoTraslado() {
 		return this.getEstrategiaDeTraslado().calcularCostoTraslado(this);
