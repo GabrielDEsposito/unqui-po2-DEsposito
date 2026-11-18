@@ -13,7 +13,7 @@ public abstract class MetodoPago {
 		this.codigoTransaccion = ++contadorTransacciones;
 		this.ValidarDatos();
 		this.ReservarFondos(monto);
-		this.EjecutarTransacion(monto);
+		this.EjecutarTransaccion(monto);
 		this.NotificarResultado(monto);
 	}
 	
@@ -21,7 +21,7 @@ public abstract class MetodoPago {
 	
 	public abstract void ReservarFondos(double monto);
 	
-	public abstract void EjecutarTransacion(double monto);
+	public abstract void EjecutarTransaccion(double monto);
 	
 	public void NotificarResultado(double monto) {
         this.codigosRegistrados.add(this.codigoTransaccion);
@@ -30,6 +30,8 @@ public abstract class MetodoPago {
 	public int getCodigoTransaccion() {
         return codigoTransaccion;
     }
+
+	
 	
 	
 }

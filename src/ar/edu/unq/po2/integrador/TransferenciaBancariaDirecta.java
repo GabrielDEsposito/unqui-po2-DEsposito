@@ -9,25 +9,34 @@ public class TransferenciaBancariaDirecta extends MetodoPago {
     private ITransferenciaBancariaDirecta TranferenciaBancariaDirecta;
     private List<ComprobanteCBU> comprobantes = new ArrayList<>();
 
+    
+    public TransferenciaBancariaDirecta(String cbu, String alias,ITransferenciaBancariaDirecta TranferenciaBancariaDirecta) {
+    	this.cbu = cbu;
+    	this.alias = alias;
+    	this.TranferenciaBancariaDirecta = TranferenciaBancariaDirecta;
+    	
+    }
+    
+    
     @Override
-    protected void ValidarDatos() {
+	public void ValidarDatos() {
         if (!TranferenciaBancariaDirecta.validarCbuYAlias(cbu, alias)) {
             throw new IllegalStateException("Datos de CBU o alias inválidos");
         }
     }
 
     @Override
-    protected void ReservarFondos(double monto) {
+	public void ReservarFondos(double monto) {
         //no se requiere reservar fondos para transferencia bancaria directa
     }
 
     @Override
-    protected void EjecutarTransacion(double monto) {
+	public void EjecutarTransaccion(double monto) {
         TranferenciaBancariaDirecta.transferenciaDirectaOProgramada(monto);
     }
 
     @Override
-    protected void NotificarResultado(double monto) {
+	public void NotificarResultado(double monto) {
         ComprobanteCBU comprobante = new ComprobanteCBU(cbu, alias, this.getCodigoTransaccion());
         this.comprobantes.add(comprobante);
     }

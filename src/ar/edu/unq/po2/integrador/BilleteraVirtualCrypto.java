@@ -15,7 +15,7 @@ public class BilleteraVirtualCrypto extends MetodoPago {
     }
 
     @Override
-	public void EjecutarTransacion(double monto) {
+	public void EjecutarTransaccion(double monto) {
         BilleteraVirtualOCrypto.acreditacionEnTiempoReal(monto);
     }
 
